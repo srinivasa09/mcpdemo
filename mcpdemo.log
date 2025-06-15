@@ -1,0 +1,36 @@
+2025-06-15T16:25:15.177+05:30  INFO 89446 --- [mcpdemo] [           main] m.m.LeaveManagerMcpServerApplication     : Starting LeaveManagerMcpServerApplication v0.0.1-SNAPSHOT using Java 17.0.8 with PID 89446 (/Users/i041148/test/mcpdemo/target/mcpdemo-0.0.1-SNAPSHOT.jar started by i041148 in /Users/i041148/test/mcpdemo)
+2025-06-15T16:25:15.178+05:30  INFO 89446 --- [mcpdemo] [           main] m.m.LeaveManagerMcpServerApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-06-15T16:25:15.625+05:30  INFO 89446 --- [mcpdemo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-06-15T16:25:15.632+05:30  INFO 89446 --- [mcpdemo] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-15T16:25:15.632+05:30  INFO 89446 --- [mcpdemo] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-06-15T16:25:15.650+05:30  INFO 89446 --- [mcpdemo] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-15T16:25:15.650+05:30  INFO 89446 --- [mcpdemo] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 445 ms
+2025-06-15T16:25:15.942+05:30  INFO 89446 --- [mcpdemo] [           main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable tools capabilities, notification: true
+2025-06-15T16:25:15.976+05:30  INFO 89446 --- [mcpdemo] [           main] o.s.a.m.s.a.McpServerAutoConfiguration   : Registered tools: 3
+2025-06-15T16:25:15.977+05:30  INFO 89446 --- [mcpdemo] [           main] o.s.a.m.s.a.McpServerAutoConfiguration   : Enable resources capabilities, n2025-06-15T16:39:04.527+05:30 ERROR 76480 --- [mcpdemo] [pool-2-thread-1] i.m.s.transport.StdioServerTransport     : Error reading from stdin
+
+java.io.IOException: Input/output error
+	at java.base/java.io.FileInputStream.readBytes(Native Method) ~[na:na]
+	at java.base/java.io.FileInputStream.read(FileInputStream.java:276) ~[na:na]
+	at java.base/java.io.BufferedInputStream.read1(BufferedInputStream.java:282) ~[na:na]
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:343) ~[na:na]
+	at java.base/sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:270) ~[na:na]
+	at java.base/sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:313) ~[na:na]
+	at java.base/sun.nio.cs.StreamDecoder.read(StreamDecoder.java:188) ~[na:na]
+	at java.base/java.io.InputStreamReader.read(InputStreamReader.java:177) ~[na:na]
+	at java.base/java.io.BufferedReader.fill(BufferedReader.java:162) ~[na:na]
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:329) ~[na:na]
+	at java.base/java.io.BufferedReader.readLine(BufferedReader.java:396) ~[na:na]
+	at io.modelcontextprotocol.server.transport.StdioServerTransport.lambda$startInboundProcessing$5(StdioServerTransport.java:139) ~[mcp-0.7.0.jar!/:na]
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:68) ~[reactor-core-3.7.6.jar!/:3.7.6]
+	at reactor.core.scheduler.SchedulerTask.call(SchedulerTask.java:28) ~[reactor-core-3.7.6.jar!/:3.7.6]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2025-06-15T16:39:04.701+05:30  INFO 76480 --- [mcpdemo] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 13 endpoints beneath base path '/actuator'
+2025-06-15T16:39:04.909+05:30  INFO 76480 --- [mcpdemo] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-06-15T16:39:04.926+05:30  INFO 76480 --- [mcpdemo] [           main] m.m.LeaveManagerMcpServerApplication     : Started LeaveManagerMcpServerApplication in 3285.153 seconds (process running for 3285.42)
+2025-06-15T16:39:04.928+05:30  INFO 76480 --- [mcpdemo] [ionShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-15T16:39:04.937+05:30  INFO 76480 --- [mcpdemo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete

@@ -1,0 +1,300 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- mirrors so we can control the access of artifacts and avoid going to
+    the internet for artifact metadata -->
+    <!--
+    <mirrors>
+        <mirror>
+            <id>devmirror</id>
+            <url>https://repo.cobalt.ariba.com/libs-release/</url>
+            <mirrorOf>*,!central,!sap-artifactory,!sap-artifactory-2,!central-local</mirrorOf>
+        </mirror>
+    </mirrors>
+    -->
+    <servers>
+        <!-- need to update this section once we get common usernames from repo.cobalt -->
+    <server>
+      <username>ARIBA-ES-JENKIN</username>
+      <password>AKCp8hzXjyetrtDPqxja4qTMBMmnoDJH1FCnUd5mx7wPwYEzJKmxG7RDJyMeP1oS7hvFikHRB</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>ARIBA-ES-JENKIN</username>
+      <password>AKCp8hzXjyetrtDPqxja4qTMBMmnoDJH1FCnUd5mx7wPwYEzJKmxG7RDJyMeP1oS7hvFikHRB</password>
+      <id>snapshots</id>
+    </server>
+    <server>
+		<id>lbn-aux</id>
+		<username>ARIBA-ES-JENKIN</username>
+      	<password>AKCp8hzXjyetrtDPqxja4qTMBMmnoDJH1FCnUd5mx7wPwYEzJKmxG7RDJyMeP1oS7hvFikHRB</password>
+	</server>
+    </servers>
+    <profiles>
+        <profile>
+      <id>distributionManagement</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+      <properties>
+        <repository.deploy.releases.url>https://repo.cobalt.ariba.com/libs-release/</repository.deploy.releases.url>
+      </properties>
+    </profile>
+        <profile>
+        <!-- the release.build profile is used when performing release
+        related operations.
+        -->
+            <id>release.build</id>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <repositories>
+            		<repository>
+						<id>central</id>
+						<name>Maven Central Repository</name>
+						<url>https://repo1.maven.org/maven2/</url>
+				</repository>
+                <repository>
+                    <id>central-libs</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                </repository>
+                <repository>
+                    <id>central-sap</id>
+                    <url>https://repo.cobalt.ariba.com/libs-ariba-thirdparty/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+                <repository>
+					<id>lbn-aux</id>
+					<url>https://common.repositories.cloud.sap:443/artifactory/lbn-aux</url>
+					<snapshots> <enabled>true</enabled> </snapshots>
+				</repository>
+                <repository>
+                    <id>central-local</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+             <repository>
+            	<id>mavenCentral</id>
+            	<name>Maven Central</name>
+            	<url>https://repo1.maven.org/maven2/</url>
+            	<releases>
+                	<enabled>true</enabled>
+            	</releases>
+            	<snapshots>
+                	<enabled>true</enabled>
+            	</snapshots>
+        	</repository>
+           </repositories>
+            <properties>
+                <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+                <tycho.localArtifacts>ignore</tycho.localArtifacts>
+                <deploy.id>deployment</deploy.id>
+                <deploy.url>https://repo.cobalt.ariba.com/libs-release/</deploy.url>
+                <deploy-snapshots.url>https://repo.cobalt.ariba.com/libs-release/</deploy-snapshots.url>
+                <deploy-releases.url>https://repo.cobalt.ariba.com/libs-release/</deploy-releases.url>
+                <deploy-milestones.url>https://repo.cobalt.ariba.com/libs-release/</deploy-milestones.url>
+                <!-- This controls updating the installroot during the build; should be true for build systems; false for developers -->
+                <isReleaseBuild>true</isReleaseBuild>
+            </properties>
+        </profile>
+        <profile>
+        <!-- milestone.build is used as a milestone build during the development cycle.
+        -->
+            <id>milestone.build</id>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                </repository>
+                <repository>
+                    <id>central-sap</id>
+                    <url>https://repo.cobalt.ariba.com/libs-ariba-thirdparty/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+                <repository>
+                    <id>central-local</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                    <releases><enabled>true</enabled></releases>
+                     <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+                <repository>
+            	<id>mavenCentral</id>
+            	<name>Maven Central</name>
+            	<url>https://repo1.maven.org/maven2/</url>
+            	<releases>
+                	<enabled>true</enabled>
+            	</releases>
+            	<snapshots>
+                	<enabled>true</enabled>
+            	</snapshots>
+        	</repository>
+
+          </repositories>
+            <properties>
+                <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+                <tycho.localArtifacts>ignore</tycho.localArtifacts>
+                <isReleaseBuild>true</isReleaseBuild>
+            </properties>
+        </profile>
+        <!-- snapshot build is for the builds that need testing/etc.  This is the default.
+        -->
+        <profile>
+            <id>snapshot.build</id>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                    <id>central-sap</id>
+                    <url>https://repo.cobalt.ariba.com/libs-ariba-thirdparty/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+                <repository>
+                       <id>central-local</id>
+                       <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                       <releases><enabled>true</enabled></releases>
+                       <snapshots><enabled>false</enabled></snapshots>
+                 </repository>
+                 <repository>
+            	<id>mavenCentral</id>
+            	<name>Maven Central</name>
+            	<url>https://repo1.maven.org/maven2/</url>
+            	<releases>
+                	<enabled>true</enabled>
+            	</releases>
+            	<snapshots>
+                	<enabled>true</enabled>
+            	</snapshots>
+        	</repository>
+
+            </repositories>
+            <properties>
+                <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+                <tycho.localArtifacts>ignore</tycho.localArtifacts>
+                <deploy.id>deployment</deploy.id>
+                <deploy.url>https://repo.cobalt.ariba.com/libs-release/</deploy.url>
+                <deploy-snapshots.url>https://repo.cobalt.ariba.com/libs-release/</deploy-snapshots.url>
+                <deploy-releases.url>https://repo.cobalt.ariba.com/libs-release/</deploy-releases.url>
+                <deploy-milestones.url>https://repo.cobalt.ariba.com/libs-release/</deploy-milestones.url>
+                <isReleaseBuild>true</isReleaseBuild>
+            </properties>
+        </profile>
+        <profile>
+            <id>developer.build</id>
+<!--
+NOTE: Developer's profile is active by default.
+Release and snapshot builds should set the correct profile
+-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo.cobalt.ariba.com/libs-release/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                    <id>central-sap</id>
+                    <url>https://repo.cobalt.ariba.com/libs-ariba-thirdparty/</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>false</enabled></snapshots>
+                </repository>
+                <repository>
+            	<id>mavenCentral</id>
+            	<name>Maven Central</name>
+            	<url>https://repo1.maven.org/maven2/</url>
+            	<releases>
+                	<enabled>true</enabled>
+            	</releases>
+            	<snapshots>
+                	<enabled>true</enabled>
+            	</snapshots>
+        	</repository>
+
+        <repository>
+            <id>central-local</id>
+             <url>https://repo.cobalt.ariba.com/libs-release/</url>
+             <releases><enabled>true</enabled></releases>
+             <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+            </repositories>
+            <properties>
+                <isReleaseBuild>false</isReleaseBuild>
+                <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+                <tycho.localArtifacts>ignore</tycho.localArtifacts>
+                <deploy.id>deployment</deploy.id>
+                <deploy.url>https://repo.cobalt.ariba.com/libs-release/</deploy.url>
+                <deploy-snapshots.url>https://repo.cobalt.ariba.com/libs-release//</deploy-snapshots.url>
+            </properties>
+        </profile>
+    </profiles>
+    <activeProfiles>
+    <!--make the profile active all the time -->
+    <activeProfile>distributionManagement</activeProfile>
+   </activeProfiles>
+
+<!-- 
+<proxies>
+    <proxy>
+      <id>httpsproxy</id>
+      <active>true</active>
+      <protocol>https</protocol>
+      <host>proxy.ariba.com</host>
+      <port>8080</port>
+      <nonProxyHosts>*.ariba.com</nonProxyHosts>
+    </proxy>
+    <proxy>
+      <id>myproxy</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>proxy.ariba.com</host>
+      <port>8080</port>
+      <nonProxyHosts>*.ariba.com</nonProxyHosts>
+    </proxy>
+  </proxies>
+ -->
+
+ <!-- plugin groups define where to search for a matching plugin -->
+
+<pluginGroups>
+        <pluginGroup>com.hpe.security.fortify.maven.plugin</pluginGroup>
+        <pluginGroup>org.whitesource</pluginGroup>
+        <pluginGroup>ariba.devtools</pluginGroup>
+        <pluginGroup>com.sap.ldi</pluginGroup>
+    </pluginGroups>
+</settings>
