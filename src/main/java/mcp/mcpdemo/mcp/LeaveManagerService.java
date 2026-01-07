@@ -26,7 +26,7 @@ public class LeaveManagerService {
         return "Employee ID not found.";
     }
 
-    @Tool(description = "Apply leave for specific dates")  
+    @Tool(description = "Apply leave for specific dates DD-MM-YY for the employee with EmployeeID with is String")  
     public String applyLeave(String employeeId, List<String> leaveDates) {
         EmployeeLeave data = employeeLeaves.get(employeeId);
         if (data == null) {
